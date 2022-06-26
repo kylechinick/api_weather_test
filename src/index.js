@@ -25,9 +25,18 @@ $(document).ready(function () {
       $('.showHumidity').text(
         `The humidity in ${city} is ${response.main.humidity}%`
       );
+      // $('.showTemp').text(
+      //   `The temperature in Kelvins is ${response.main.temp} degrees.`
+      // );
       $('.showTemp').text(
-        `The temperature in Kelvins is ${response.main.temp} degrees.`
+        `The temperature in Kelvins is ${convertKelvinToFahrenheit(
+          response.main.temp
+        )} degrees.`
       );
+    }
+
+    function convertKelvinToFahrenheit(kelvinValue) {
+      return parseFloat((((kelvinValue - 273.15) * 9) / 5 + 32).toFixed(0));
     }
   });
 });
